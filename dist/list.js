@@ -1,5 +1,4 @@
-import { categories } from "./api/categoria";
-// Cria e retorna o formulário
+import { categories } from "./api/categoria.js";
 const CategoriesList = async () => {
     const categoriesList = document.createElement('ul');
     const response = await categories.get();

@@ -1,0 +1,20 @@
+const SignForm = () => {
+    const form = document.createElement("form");
+    const usernameInput = document.createElement("input");
+    const emailInput = document.createElement("input");
+    const fullNameInput = document.createElement("input");
+    const passwordInput = document.createElement("input");
+    const submitBtn = document.createElement("button");
+    usernameInput.placeholder = 'Digite seu username';
+    fullNameInput.placeholder = 'Digite seu nome completo';
+    emailInput.placeholder = 'Digite seu email';
+    passwordInput.placeholder = 'Digite sua senha';
+    submitBtn.innerText = 'Enviar';
+    form.append(usernameInput);
+    form.append(fullNameInput);
+    form.append(emailInput);
+    form.append(passwordInput);
+    form.append(submitBtn);
+    return form;
+};
+export default SignForm;

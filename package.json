@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "vi": "vite",
-    "vi:build" : "tsc && vite build",
+    "vi:build": "tsc && vite build",
     "preview": "vite preview",
     "build": "tsc --watch",
     "start": "webpack serve",
@@ -30,6 +30,7 @@
   "dependencies": {
     "@types/node": "^22.5.5",
     "axios": "^1.7.7",
+    "date-fns": "^3.6.0",
     "dotenv": "^16.4.5"
   }
 }
