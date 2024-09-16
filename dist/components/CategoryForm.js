@@ -9,7 +9,10 @@ async function handleSubmit() {
     const description = descInput.value;
     if (name && description) {
         await categories.post({ name, description });
-        console.log('fiz a req!');
+        const event = new CustomEvent('categoryAdded', {
+            detail: { name, description },
+        });
+        document.dispatchEvent(event);
     }
 }
 const CategoryForm = async () => {

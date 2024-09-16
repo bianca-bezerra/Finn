@@ -2,8 +2,6 @@ import { categories } from "../api/categories.js";
 import Button from "./ui/button.js";
 import Field from "./ui/field.js";
 import Form from "./ui/form.js";
-import Input from "./ui/input.js";
-import Label from "./ui/label.js";
 
 async function handleSubmit() {
     const nomeInput = document.getElementById("nameInput") as HTMLInputElement;
@@ -13,7 +11,10 @@ async function handleSubmit() {
 
     if (name && description) {
         await categories.post({ name, description });
-        console.log('fiz a req!');
+        const event = new CustomEvent('categoryAdded', {
+            detail: { name, description },
+        });
+        document.dispatchEvent(event);
     }
 }
 
@@ -26,7 +27,6 @@ const CategoryForm = async () => {
     const form = Form('Adicionar categoria');
 
     //NOME
-    
     const nameField = Field('Nome','Digite o nome da categoria','nameInput')
 
     //LABEL DESCRIÇÃO

@@ -5,9 +5,10 @@ const DebitList = async () => {
     const table = Table.Root();
     const thead = Table.Header(['Valor', 'Categoria', 'Data']);
     const tbody = document.createElement("tbody");
-    const allDebits = await debits.get();
-    if (allDebits.length) {
-        allDebits.forEach(debit => {
+    let allDebits = await debits.get();
+    const renderTableBody = (data) => {
+        tbody.innerHTML = "";
+        data.forEach(debit => {
             const row = document.createElement('tr');
             row.classList.add('font-onest');
             row.appendChild(Table.Cell(String(`R$ ${debit.value}`)));
@@ -19,10 +20,18 @@ const DebitList = async () => {
             })));
             tbody.appendChild(row);
         });
-    }
+    };
+    renderTableBody(allDebits);
     table.appendChild(thead);
     table.appendChild(tbody);
     container.appendChild(table);
+    const updateDebits = async () => {
+        allDebits = await debits.get();
+        renderTableBody(allDebits);
+    };
+    document.addEventListener('debitAdded', async () => {
+        await updateDebits();
+    });
     return container;
 };
 export default DebitList;

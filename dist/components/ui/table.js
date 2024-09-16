@@ -7,7 +7,6 @@ const Container = () => {
 const Header = (headers) => {
     // CABEÇALHO
     const thead = document.createElement('thead');
-    thead.classList.add();
     const headerRow = document.createElement('tr');
     headers.forEach(headerText => {
         const th = document.createElement('th');
