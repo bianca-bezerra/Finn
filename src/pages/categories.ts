@@ -9,6 +9,7 @@ async function main() {
   const { redirect } = middleware();
   if (!redirect) {
     const menubar = Menu();
+
     const container = document.getElementById("container");
     container?.classList.add("flex", "flex-col", "gap-y-10", "p-10");
     const title = document;

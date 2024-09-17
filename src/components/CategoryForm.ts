@@ -22,7 +22,7 @@ const CategoryForm = async () => {
   //DIV
   const div = document.createElement("div");
   div.classList.add(
-    "h-1/4",
+    "h-fit",
     "p-6",
     "rounded",
     "shadow-lg",

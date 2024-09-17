@@ -18,6 +18,7 @@ const Menu = () => {
 
   const title = document.createElement("p");
   title.innerText = "Finn";
+
   title.classList.add("text-white", "font-bold", "text-center", "font-pixel");
 
   const divLinks = document.createElement("div");

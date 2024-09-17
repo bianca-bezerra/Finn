@@ -26,7 +26,7 @@ const DebitList = async () => {
       row.classList.add("font-onest");
 
       row.id = `debit-${debit.id}`;
-      const valueCell = Table.Cell(String(debit.value));
+      const valueCell = Table.Cell(String(`R$ ${debit.value}`));
       const catNameCell = Table.Cell(String(debit.category.name));
       const dtPayCell = Table.Cell(
         new Date(debit.dt_payment).toLocaleString("pt-BR", {

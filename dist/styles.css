@@ -588,12 +588,24 @@ video {
   }
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mb-32 {
+  margin-bottom: 8rem;
 }
 
 .flex {
@@ -610,10 +622,6 @@ video {
 
 .h-1\/4 {
   height: 25%;
-}
-
-.h-1\/6 {
-  height: 16.666667%;
 }
 
 .h-10 {

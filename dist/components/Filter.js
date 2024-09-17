@@ -30,7 +30,7 @@ function handleClick() {
 }
 const Filter = async () => {
     const div = document.createElement("div");
-    div.classList.add("h-1/6", "p-6", "rounded", "shadow-md", "space-y-4", "w-full", "justify-center");
+    div.classList.add("h-fit", "p-6", "rounded", "shadow-md", "space-y-4", "w-full", "justify-center");
     const form = Form("Filtros");
     //CATEGORIA
     const categoryLabel = Label("Categoria");

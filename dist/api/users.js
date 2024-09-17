@@ -1,4 +1,4 @@
-import config from "./../env.js";
+import config from "../env.js";
 async function get() {
     const res = await fetch(`${config.API_URL}users/`);
     return (await res.json()).users;

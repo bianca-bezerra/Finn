@@ -23,7 +23,7 @@ function handleSubmit() {
 }
 const SignForm = () => {
     const div = document.createElement("div");
-    div.classList.add("h-1/4", "p-6", "rounded", "shadow-md", "space-y-4", "w-1/4", "justify-center");
+    div.classList.add("h-fit", "p-6", "rounded", "shadow-md", "space-y-4", "w-1/4", "justify-center");
     const form = Form("Criar conta");
     const usernameField = Field("Username", "Digite seu username", "usernameInput");
     const emailField = Field("Email", "Digite seu email", "emailInput");

@@ -18,7 +18,7 @@ async function handleSubmit() {
 const CategoryForm = async () => {
     //DIV
     const div = document.createElement("div");
-    div.classList.add("h-1/4", "p-6", "rounded", "shadow-lg", "space-y-4", "w-full", "justify-center");
+    div.classList.add("h-fit", "p-6", "rounded", "shadow-lg", "space-y-4", "w-full", "justify-center");
     // FORM
     const form = Form("Adicionar categoria");
     //NOME
