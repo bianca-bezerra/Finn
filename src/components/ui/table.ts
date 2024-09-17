@@ -2,7 +2,7 @@
 const Container = () => {
     // DIV
     const div = document.createElement('div');
-    div.classList.add('h-1/4', 'bg-black', 'p-6', 'rounded-lg', 'shadow-md', 'space-y-4', 'w-full', 'justify-center', 'flex');
+    div.classList.add( 'bg-black', 'p-6', 'rounded-lg', 'shadow-md', 'space-y-4', 'w-full', 'justify-center', 'flex');
 
     return div;
 };

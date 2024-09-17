@@ -1,82 +1,103 @@
 import { categories } from "./../api/categories.js";
 import Button from "./ui/button.js";
-import Field from "./ui/field.js";
 import Form from "./ui/form.js";
 import Input from "./ui/input.js";
 import Label from "./ui/label.js";
-import Link from "./ui/link.js";
 import Select from "./ui/select.js";
 
 function handleClick() {
-    const categorySelect = document.getElementById("filterCategorySelect") as HTMLSelectElement;
-    const dateBeforeInput = document.getElementById('dateBeforeInput') as HTMLInputElement;
-    const dateAfterInput = document.getElementById('dateAfterInput') as HTMLInputElement;
+  const categorySelect = document.getElementById(
+    "filterCategorySelect"
+  ) as HTMLSelectElement;
+  const dateBeforeInput = document.getElementById(
+    "dateBeforeInput"
+  ) as HTMLInputElement;
+  const dateAfterInput = document.getElementById(
+    "dateAfterInput"
+  ) as HTMLInputElement;
 
-    const category_id: string = categorySelect.value;
-    const dt_payment_from = dateAfterInput.value;
-    const dt_payment_to = dateBeforeInput.value;
+  const category_id: string = categorySelect.value;
+  const dt_payment_from = dateAfterInput.value;
+  const dt_payment_to = dateBeforeInput.value;
 
-    let detail: { [key: string]: any } = {};
+  let detail: { [key: string]: any } = {};
 
-    if (!isNaN(Number(category_id))) {
-        detail.category_id = category_id;
-    }
-    if (dt_payment_from) {
-        detail.dt_payment_from = dt_payment_from;
-    }
-    if (dt_payment_to) {
-        detail.dt_payment_from = dt_payment_to;
-    }
+  if (!isNaN(Number(category_id))) {
+    detail.category_id = category_id;
+  }
+  if (dt_payment_from) {
+    detail.dt_payment_from = dt_payment_from;
+  }
+  if (dt_payment_to) {
+    detail.dt_payment_from = dt_payment_to;
+  }
 
-    if (Object.keys(detail).length) {
-        const event = new CustomEvent('filterSelected', {
-            detail,
-        });
-        document.dispatchEvent(event);
-    }
+  if (Object.keys(detail).length) {
+    const event = new CustomEvent("filterSelected", {
+      detail,
+    });
+    document.dispatchEvent(event);
+  }
 }
 
 const Filter = async () => {
+  const div = document.createElement("div");
+  div.classList.add(
+    "h-1/6",
+    "p-6",
+    "rounded",
+    "shadow-md",
+    "space-y-4",
+    "w-full",
+    "justify-center"
+  );
 
-    const div = document.createElement('div');
-    div.classList.add('h-1/6', 'p-6', 'rounded', 'shadow-md', 'space-y-4', 'w-full', 'justify-center');
+  const form = Form("Filtros");
 
-    const form = Form("Filtros");
+  //CATEGORIA
+  const categoryLabel = Label("Categoria");
+  categoryLabel.htmlFor = "filterCategorySelect";
+  const categorySelect = Select("filterCategorySelect");
 
-    //CATEGORIA
-    const categoryLabel = Label('Categoria');
-    categoryLabel.htmlFor = 'filterCategorySelect';
-    const categorySelect = Select('filterCategorySelect');
+  const categoriesOptions = await categories.get();
+  categoriesOptions.forEach((category) => {
+    const option = document.createElement("option");
+    option.classList.add("rounded");
+    option.innerText = category.name;
+    option.value = String(category.id);
+    categorySelect.appendChild(option);
+  });
 
-    const categoriesOptions = await categories.get();
-    categoriesOptions.forEach((category) => {
-        const option = document.createElement('option');
-        option.classList.add('rounded');
-        option.innerText = category.name;
-        option.value = String(category.id);
-        categorySelect.appendChild(option);
-    });
+  //DATA DEPOIS
+  const dateAfterLabel = Label("A partir de", "dateAfterInput");
+  const dateAfterInput = Input();
+  dateAfterInput.id = "dateAfterInput";
+  dateAfterInput.type = "date";
 
+  //DATA ANTES
+  const dateBeforeLabel = Label("Até", "dateBeforeInput");
+  const dateBeforeInput = Input();
+  dateBeforeInput.id = "dateBeforeInput";
+  dateBeforeInput.type = "date";
 
-    //DATA DEPOIS
-    const dateAfterLabel = Label('A partir de', 'dateAfterInput');
-    const dateAfterInput = Input();
-    dateAfterInput.id = 'dateAfterInput'
-    dateAfterInput.type = 'date';
+  const submitBtn = Button("Aplicar");
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    handleClick();
+  });
 
-    //DATA ANTES
-    const dateBeforeLabel = Label('Até', 'dateBeforeInput');
-    const dateBeforeInput = Input();
-    dateBeforeInput.id = 'dateBeforeInput'
-    dateBeforeInput.type = 'date';
+  form.append(
+    categoryLabel,
+    categorySelect,
+    dateAfterLabel,
+    dateAfterInput,
+    dateBeforeLabel,
+    dateBeforeInput,
+    submitBtn
+  );
 
-    const submitBtn = Button('Aplicar')
-    submitBtn.addEventListener('click', (e) => { e.preventDefault(); handleClick() });
+  div.appendChild(form);
 
-    form.append(categoryLabel, categorySelect, dateAfterLabel, dateAfterInput, dateBeforeLabel, dateBeforeInput, submitBtn);
-
-    div.appendChild(form);
-
-    return div;
+  return div;
 };
 export default Filter;

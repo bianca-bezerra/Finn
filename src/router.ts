@@ -1,8 +1,8 @@
-import App from './App.js';
-import CategoryList from './components/CategoriesList.js';
-import CategoryForm from './components/CategoryForm.js';
-import DebitForm from './components/DebitForm.js';
-import DebitList from './components/DebitList.js';
+import App from "./App.js";
+import CategoryList from "./components/CategoriesList.js";
+import CategoryForm from "./components/CategoryForm.js";
+import DebitForm from "./components/DebitForm.js";
+import DebitList from "./components/DebitList.js";
 
 interface RouteConfig {
   linkLabel: string;
@@ -16,44 +16,44 @@ type Routes = {
 const routes: Routes = {
   "/": {
     linkLabel: "Dashboard",
-    component: App
+    component: App,
   },
   "/categoria": {
     linkLabel: "Categorias",
     component: async () => {
-      const container = document.createElement('div');
-      container.classList.add('categories-section');
+      const container = document.createElement("div");
+      container.classList.add("categories-section");
       container.append(await CategoryList());
       container.append(await CategoryForm());
       return container;
-    }
+    },
   },
   "/despesa": {
     linkLabel: "Despesas",
     component: async () => {
-      const container = document.createElement('div');
-      container.classList.add('debits-section');
+      const container = document.createElement("div");
+      container.classList.add("debits-section");
       container.append(await DebitList());
       container.append(await DebitForm());
       return container;
-    }
-  }
+    },
+  },
 };
 
 const app = document.querySelector("#app") as HTMLElement;
 const nav = document.querySelector("#nav") as HTMLElement;
 
 const renderContent = async (route: string) => {
-  const contentContainer = document.createElement('div');
+  const contentContainer = document.createElement("div");
   const routeConfig = routes[route];
-  
+
   if (routeConfig && routeConfig.component) {
     const component = await routeConfig.component();
     contentContainer.appendChild(component);
-    app.innerHTML = ''; // Limpa o conteúdo atual
+    app.innerHTML = ""; // Limpa o conteúdo atual
     app.appendChild(contentContainer);
   } else {
-    app.innerHTML = '404 - Not Found';
+    app.innerHTML = "404 - Not Found";
   }
 };
 
