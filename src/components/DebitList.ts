@@ -1,5 +1,5 @@
 import { Debit } from "@/types.js";
-import { debits } from "../api/debit.js";
+import { debits } from "../api/debits.js";
 import Table from "./ui/table.js";
 import TrashIcon from "./icons/trash.js";
 
@@ -7,6 +7,7 @@ async function handleDelete(id: number) {
     const tr = document.getElementById(`debit-${id}`)
     tr?.classList.add('text-gray-500', 'line-through');
     const ok = await debits.remove(id);
+    console.log('Deleto deu certo? ', ok);
     tr?.remove();
 }
 
@@ -40,7 +41,7 @@ const DebitList = async () => {
             //DELETO
             const td = document.createElement("td");
             const deleteBtn = TrashIcon();
-            // deleteBtn.classList.add(`hidden`); e botar um hover pra aparecer o icone
+            // deleteBtn.classList.add(`hidden`); e botar um hover pra aparecer o 
             deleteBtn.addEventListener('click', () => handleDelete(debit.id));
             td.append(deleteBtn);//Talvez botar um botao depois pra nao ser exatamente no icone
 
@@ -82,6 +83,7 @@ const DebitList = async () => {
     container.appendChild(table);
 
     const updateDebits = async () => {
+        console.log(`hello`);
         allDebits = await debits.get();
         renderTableBody(allDebits);
     };
@@ -90,11 +92,11 @@ const DebitList = async () => {
         await updateDebits();
     });
 
-    // document.addEventListener('filterSelected', async (e) => {
-    //     const event = e as CustomEvent;
-    //     allDebits = await debits.get(event.detail);
-    //     renderTableBody(allDebits);
-    // });
+    document.addEventListener('filterSelected', async (e) => {
+        const event = e as CustomEvent;
+        allDebits = await debits.get(event.detail);
+        renderTableBody(allDebits);
+    });
 
     return container;
 };

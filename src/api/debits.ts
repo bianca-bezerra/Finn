@@ -1,13 +1,29 @@
-import { Debit, DebitRequest } from "./../types";
+import { Debit, DebitRequest } from "./../types.js";
 import config from "./../env.js"
+import { addQuery } from "./../utils/query.js";
 
 type QueryParams = {
-    category_id: number
+    category_id?: string;
+    dt_payment_from?: string;
+    dt_payment_to?: string;
 }
+
 async function get(q?: QueryParams): Promise<Debit[]> {
-    const res = await fetch(`${config.API_URL}debits/`,  {headers: {
-        'Content-Type': 'application/json'
-    }});
+    let query = '';
+    query = addQuery('category_id',q?.category_id,query);
+    query = addQuery('dt_payment_from',q?.dt_payment_from,query);
+    query = addQuery('dt_payment_to',q?.dt_payment_to,query);
+
+    let url = `${config.API_URL}debits/`;
+    if (query) {
+        url += `?${query}`
+    }
+    console.log(url);
+    const res = await fetch(url, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
     const data = (await res.json()).debits
     console.log('Os débitos são: ', JSON.stringify(data));
     return data;

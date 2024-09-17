@@ -9,20 +9,37 @@ import Select from "./ui/select.js";
 
 function handleClick() {
     const categorySelect = document.getElementById("filterCategorySelect") as HTMLSelectElement;
-    const category_id: number = Number(categorySelect.value);
+    const dateBeforeInput = document.getElementById('dateBeforeInput') as HTMLInputElement;
+    const dateAfterInput = document.getElementById('dateAfterInput') as HTMLInputElement;
 
-    if (!isNaN(category_id)) {
+    const category_id: string = categorySelect.value;
+    const dt_payment_from = dateAfterInput.value;
+    const dt_payment_to = dateBeforeInput.value;
+
+    let detail: { [key: string]: any } = {};
+
+    if (!isNaN(Number(category_id))) {
+        detail.category_id = category_id;
+    }
+    if (dt_payment_from) {
+        detail.dt_payment_from = dt_payment_from;
+    }
+    if (dt_payment_to) {
+        detail.dt_payment_from = dt_payment_to;
+    }
+
+    if (Object.keys(detail).length) {
         const event = new CustomEvent('filterSelected', {
-            detail: { category_id },
+            detail,
         });
         document.dispatchEvent(event);
     }
 }
 
-const Filter =async() => {
+const Filter = async () => {
 
     const div = document.createElement('div');
-    div.classList.add('h-1/4', 'p-6', 'rounded', 'shadow-md', 'space-y-4', 'w-1/4', 'justify-center');
+    div.classList.add('h-1/6', 'p-6', 'rounded', 'shadow-md', 'space-y-4', 'w-full', 'justify-center');
 
     const form = Form("Filtros");
 
@@ -40,8 +57,23 @@ const Filter =async() => {
         categorySelect.appendChild(option);
     });
 
+
+    //DATA DEPOIS
+    const dateAfterLabel = Label('A partir de', 'dateAfterInput');
+    const dateAfterInput = Input();
+    dateAfterInput.id = 'dateAfterInput'
+    dateAfterInput.type = 'date';
+
+    //DATA ANTES
+    const dateBeforeLabel = Label('Até', 'dateBeforeInput');
+    const dateBeforeInput = Input();
+    dateBeforeInput.id = 'dateBeforeInput'
+    dateBeforeInput.type = 'date';
+
     const submitBtn = Button('Aplicar')
     submitBtn.addEventListener('click', (e) => { e.preventDefault(); handleClick() });
+
+    form.append(categoryLabel, categorySelect, dateAfterLabel, dateAfterInput, dateBeforeLabel, dateBeforeInput, submitBtn);
 
     div.appendChild(form);
 

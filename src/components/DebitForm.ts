@@ -1,5 +1,5 @@
 import { categories } from "../api/categories.js";
-import { debits } from "../api/debit.js";
+import { debits } from "../api/debits.js";
 import Button from "./ui/button.js";
 import Field from "./ui/field.js";
 import Form from "./ui/form.js";
@@ -24,7 +24,7 @@ async function handleSubmit() {
 
 const DebitForm = async () => {
     const div = document.createElement('div');
-    div.classList.add('h-1/4', 'p-6', 'rounded', 'shadow-md', 'space-y-4', 'w-1/4', 'justify-center');
+    div.classList.add('h-1/6', 'p-6', 'rounded', 'shadow-lg', 'space-y-4', 'w-full', 'justify-center')
 
     const form = Form('Adicionar despesa');
 

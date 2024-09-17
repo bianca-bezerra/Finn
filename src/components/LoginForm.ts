@@ -13,7 +13,7 @@ const LoginForm = () => {
     const form = Form("Login");
 
     const usernameField = Field('Username', 'Digite seu username', 'usernameInput')
-    const passwordField = Field('Senha', 'Digite sua melhor senha', 'passwordInput');
+    const emailField = Field('Email', 'Digite seu email', 'emailInputt');
 
     const submitBtn = Button('Enviar')
     // submitBtn.addEventListener('click', (e) => { e.preventDefault(); handleSubmit() });
@@ -22,7 +22,7 @@ const LoginForm = () => {
     footer.innerHTML = 'Novo por aqui? ';
     footer.appendChild(Link('./sign.html', 'Criar conta'));
     
-    form.append(usernameField, passwordField, submitBtn,footer);
+    form.append(usernameField, emailField, submitBtn,footer);
     div.appendChild(form);
 
     return div;

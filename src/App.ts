@@ -2,6 +2,7 @@ import CategoryList from './components/CategoriesList.js';
 import CategoryForm from './components/CategoryForm.js';
 import DebitForm from './components/DebitForm.js';
 import DebitList from './components/DebitList.js';
+import Filter from './components/Filter.js';
 import LoginForm from './components/LoginForm.js';
 import SignForm from './components/SignForm.js';
 
@@ -30,8 +31,7 @@ const App = async () => {
   // container.classList.add('App', 'bg-pink-500');
 
   // debitSection.append(await DebitForm());
-
-
+  container?.append(await Filter());
   container.append(categorySection)
   container.append(debitSection)
   container.append(userSection);

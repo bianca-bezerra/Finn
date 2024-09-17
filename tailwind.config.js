@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         onest: ["Onest"],
+        pixel: ["Pixelify Sans"]
       },
     },
   },
