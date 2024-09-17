@@ -8,6 +8,7 @@ async function main() {
   if (!redirect) {
     const container = document.getElementById("container");
     container?.append(await SignForm());
+    
 
     hFull();
     if (container) container.style.height = "100%";

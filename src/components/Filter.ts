@@ -42,6 +42,8 @@ function handleClick() {
 
 const Filter = async () => {
   const div = document.createElement("div");
+  // div.style.marginRight = "5px";
+
   div.classList.add(
     "h-fit",
     "p-6",
@@ -49,7 +51,10 @@ const Filter = async () => {
     "shadow-md",
     "space-y-4",
     "w-full",
-    "justify-center"
+    "justify-center",
+    "border-2",
+    "border-gray-700",
+    "mr-2"
   );
 
   const form = Form("Filtros");

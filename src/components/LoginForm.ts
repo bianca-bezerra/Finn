@@ -32,7 +32,9 @@ const LoginForm = () => {
     "shadow-md",
     "space-y-4",
     "w-1/4",
-    "justify-center"
+    "justify-center",
+    "border-2",
+    "border-gray-400"
   );
 
   const form = Form("Login");

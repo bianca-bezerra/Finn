@@ -58,6 +58,7 @@ const SignForm = () => {
     "Digite seu nome",
     "fullNameInput"
   );
+
   const passwordField = Field(
     "Senha",
     "Digite sua melhor senha",

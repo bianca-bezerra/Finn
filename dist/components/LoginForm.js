@@ -23,7 +23,7 @@ async function handleSubmit() {
 }
 const LoginForm = () => {
     const div = document.createElement("div");
-    div.classList.add("p-6", "rounded", "shadow-md", "space-y-4", "w-1/4", "justify-center");
+    div.classList.add("p-6", "rounded", "shadow-md", "space-y-4", "w-1/4", "justify-center", "border-2", "border-gray-400");
     const form = Form("Login");
     const usernameField = Field("Username", "Digite seu username", "usernameInput");
     const passwordField = Field("Senha", "Digite sua senha", "passwordInput");
