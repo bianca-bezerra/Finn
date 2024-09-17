@@ -3,6 +3,7 @@ import Field from "./ui/field.js";
 import Form from "./ui/form.js";
 import Input from "./ui/input.js";
 import Label from "./ui/label.js";
+import Link from "./ui/link.js";
 
 const LoginForm = () => {
 
@@ -15,9 +16,13 @@ const LoginForm = () => {
     const passwordField = Field('Senha', 'Digite sua melhor senha', 'passwordInput');
 
     const submitBtn = Button('Enviar')
-
     // submitBtn.addEventListener('click', (e) => { e.preventDefault(); handleSubmit() });
-    form.append(usernameField, passwordField, submitBtn);
+
+    const footer = document.createElement('footer');
+    footer.innerHTML = 'Novo por aqui? ';
+    footer.appendChild(Link('./sign.html', 'Criar conta'));
+    
+    form.append(usernameField, passwordField, submitBtn,footer);
     div.appendChild(form);
 
     return div;

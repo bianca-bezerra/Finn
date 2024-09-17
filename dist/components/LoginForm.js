@@ -1,6 +1,7 @@
 import Button from "./ui/button.js";
 import Field from "./ui/field.js";
 import Form from "./ui/form.js";
+import Link from "./ui/link.js";
 const LoginForm = () => {
     const div = document.createElement('div');
     div.classList.add('h-1/4', 'p-6', 'rounded', 'shadow-md', 'space-y-4', 'w-1/4', 'justify-center');
@@ -9,7 +10,10 @@ const LoginForm = () => {
     const passwordField = Field('Senha', 'Digite sua melhor senha', 'passwordInput');
     const submitBtn = Button('Enviar');
     // submitBtn.addEventListener('click', (e) => { e.preventDefault(); handleSubmit() });
-    form.append(usernameField, passwordField, submitBtn);
+    const footer = document.createElement('footer');
+    footer.innerHTML = 'Novo por aqui? ';
+    footer.appendChild(Link('./sign.html', 'Criar conta'));
+    form.append(usernameField, passwordField, submitBtn, footer);
     div.appendChild(form);
     return div;
 };

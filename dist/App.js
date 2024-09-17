@@ -21,7 +21,6 @@ const App = async () => {
     userSection.append(LoginForm());
     // container.classList.add('App', 'bg-pink-500');
     // debitSection.append(await DebitForm());
-    // debitSection.append(await CategoriesList())
     container.append(categorySection);
     container.append(debitSection);
     container.append(userSection);

@@ -30,7 +30,6 @@ const App = async () => {
   // container.classList.add('App', 'bg-pink-500');
 
   // debitSection.append(await DebitForm());
-  // debitSection.append(await CategoriesList())
 
 
   container.append(categorySection)

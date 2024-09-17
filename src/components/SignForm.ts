@@ -3,6 +3,7 @@ import Field from "./ui/field.js";
 import Form from "./ui/form.js";
 import Input from "./ui/input.js";
 import Label from "./ui/label.js";
+import Link from "./ui/link.js";
 
 const SignForm = () => {
 
@@ -18,10 +19,13 @@ const SignForm = () => {
 
     const submitBtn = Button('Enviar')
 
-    // submitBtn.addEventListener('click', (e) => { e.preventDefault(); handleSubmit() });
-    form.append(usernameField, emailField, fullNameField, passwordField, submitBtn);
-    div.appendChild(form);
+    const footer = document.createElement('footer');
+    footer.innerHTML = 'Já possui conta? ';
+    footer.appendChild(Link('./login.html', 'Fazer login'));
 
+    // submitBtn.addEventListener('click', (e) => { e.preventDefault(); handleSubmit() });
+    form.append(usernameField, emailField, fullNameField, passwordField, submitBtn, footer);
+    div.appendChild(form);
     return div;
 };
 export default SignForm;
