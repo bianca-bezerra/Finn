@@ -1,26 +1,54 @@
-import {  User,UserRequest } from "./../types.js";
-import config from "../env.js"
+import { User, UserRequest } from "./../types.js";
+import config from "./../env.js";
 
 async function get(): Promise<User[]> {
-    const res = await fetch(`${config.API_URL}users/`);
-    return (await res.json()).users;
+  const res = await fetch(`${config.API_URL}users/`);
+  return (await res.json()).users;
 }
 
 async function sign(data: UserRequest): Promise<void> {
-    const res = await fetch(`${config.API_URL}users/`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }, method: "POST", body: JSON.stringify(data)
-    });
-    return await res.json();
+  console.log("hello hello baby");
+  const res = await fetch(`${config.API_URL}auth/register`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+  return await res.json();
 }
 
-async function login({}:{username: string, password: string}): Promise<boolean> {//OBS: A password na verdade eh o email...
-    const users = await get();
-    return(users.find((user)=>user.username === username && user.email && password))
-}
+async function authenticate({
+  username,
+  password,
+}: {
+  username: string;
+  password: string;
+}): Promise<boolean> {
+  const res = await fetch(`${config.API_URL}auth/login`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({ username, password }),
+  });
+  const body = await res.json();
+  const logged = body.message === "👍";
 
+  if (!logged) return false;
+
+  const users = await get();
+  console.log("entrei no login com ", username, " e ", password);
+  const user = users.find((user) => user.username === username);
+  if (user === undefined) {
+    throw Error("404 - Não foram encontrados os dados do usuário logado!");
+  }
+  sessionStorage.setItem("account", JSON.stringify(user));
+  return true;
+}
 
 export const users = {
-    get, sign, login
-}
+  get,
+  sign,
+  authenticate,
+};

@@ -1,14 +1,13 @@
-import CategoryList from './components/CategoriesList.js';
-import CategoryForm from './components/CategoryForm.js';
-import DebitForm from './components/DebitForm.js';
-import DebitList from './components/DebitList.js';
-import Filter from './components/Filter.js';
-import LoginForm from './components/LoginForm.js';
-import SignForm from './components/SignForm.js';
+import CategoryList from "./components/CategoriesList.js";
+import DebitList from "./components/DebitList.js";
+import Menu from "./components/Menu.js";
+import { hFull } from "./utils/styles.js";
 
 const App = async () => {
-  const container = document.createElement('div');
-  container.classList.add()
+  const container = document.createElement("div");
+  container.classList.add();
+
+  const menu = Menu();
 
   const categorySection = document.createElement("section");
   categorySection.classList.add("flex");
@@ -16,25 +15,22 @@ const App = async () => {
   const debitSection = document.createElement("section");
   debitSection.classList.add("flex");
 
-  const userSection = document.createElement("section")
+  const userSection = document.createElement("section");
   userSection.classList.add("flex");
 
-  categorySection.append(await CategoryForm())
-  categorySection.append(await CategoryList())
+  categorySection.append(await CategoryList());
 
-  debitSection.append(await DebitForm())
-  debitSection.append(await DebitList())
+  debitSection.append(await DebitList());
 
-  userSection.append(SignForm());
-  userSection.append(LoginForm());
-
-  // container.classList.add('App', 'bg-pink-500');
+  container.classList.add("flex", "justify-center", "gap-5");
+  hFull();
+  container.style.height = "100%";
+  container.style.alignItems = "center";
 
   // debitSection.append(await DebitForm());
-  container?.append(await Filter());
-  container.append(categorySection)
-  container.append(debitSection)
-  container.append(userSection);
+  document.body.append(menu);
+  container.append(categorySection);
+  container.append(debitSection);
   return container;
 };
 

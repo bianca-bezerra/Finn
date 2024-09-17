@@ -7,9 +7,6 @@
     "moduleResolution": "Bundler",
     "strict": true,
     "esModuleInterop": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
