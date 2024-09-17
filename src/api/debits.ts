@@ -1,5 +1,5 @@
 import { Debit, DebitRequest } from "./../types.js";
-import config from "./../env.js"
+import config from "../env.js"
 import { addQuery } from "./../utils/query.js";
 
 type QueryParams = {

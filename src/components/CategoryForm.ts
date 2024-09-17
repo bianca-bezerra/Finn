@@ -36,7 +36,7 @@ const CategoryForm = async () => {
 
     //INPUT DESCRIÇÃO
     const descInput = document.createElement("textarea");
-    descInput.classList.add('h-10', 'rounded-lg', 'p-2')
+    descInput.classList.add('h-10', 'rounded-lg', 'p-2','bg-gray-300','border-2','border-gray-400','placeholder-gray-500')
     descInput.id = 'descInput';
     descInput.placeholder = 'Deixe uma descrição...';
 

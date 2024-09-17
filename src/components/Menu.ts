@@ -2,7 +2,7 @@ import Link from "./ui/link.js";
 
 const Menu = () => {
     const menu = document.createElement('div');
-    menu.classList.add('h-14', 'w-full', 'rounded-lg', 'flex', 'bg-black', 'flex', 'items-center', 'p-5', 'justify-between')
+    menu.classList.add('h-12', 'w-full', 'rounded-xl', 'flex', 'bg-black', 'flex', 'items-center', 'p-5', 'justify-between','shadow-md')
 
     const title = document.createElement('p')
     title.innerText = 'Finn'
@@ -16,7 +16,7 @@ const Menu = () => {
 
     divLinks.append(linkCategory, linkDebit)
 
-    menu.append(title, divLinks)
+    menu.append(title, divLinks) 
     return menu;
 }
 export default Menu;

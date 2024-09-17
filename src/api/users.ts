@@ -1,5 +1,5 @@
 import {  User,UserRequest } from "./../types.js";
-import config from "./../env.js"
+import config from "../env.js"
 
 async function get(): Promise<User[]> {
     const res = await fetch(`${config.API_URL}users/`);

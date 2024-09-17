@@ -1,5 +1,5 @@
 import { Category, CategoryRequest } from "./../types";
-import config from "./../env.js"
+import config from "../env.js"
 
 async function get(): Promise<Category[]> {
     const res = await fetch(`${config.API_URL}categories/`);
