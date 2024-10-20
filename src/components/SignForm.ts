@@ -1,5 +1,5 @@
-import { users } from "./../api/users.js";
-import { strExists } from "./../utils/strings.js";
+import { auth } from "../api/auth.js";
+import { strExists } from "../utils/strings.js";
 import Button from "./ui/button.js";
 import Field from "./ui/field.js";
 import Form from "./ui/form.js";
@@ -25,7 +25,7 @@ function handleSubmit() {
     console.error("Preencha o formulário corretamente!");
   }
 
-  users.sign({
+  auth.sign({
     username: usernameInput.value,
     full_name: fullNameInput.value,
     email: emailInput.value,

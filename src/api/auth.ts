@@ -1,5 +1,6 @@
 import config from "../env.js";
 import { User, UserRequest } from "./../types.js";
+import { fetchWithToken } from "./config.js";
 
 async function get(): Promise<User[]> {
   const res = await fetch(`${config.API_URL}users/`);
@@ -11,6 +12,7 @@ async function sign(data: UserRequest): Promise<void> {
   const res = await fetch(`${config.API_URL}auth/register`, {
     headers: {
       "Content-Type": "application/json",
+      'Access-Control-Allow-Origin': '*'
     },
     method: "POST",
     body: JSON.stringify(data),
@@ -18,7 +20,7 @@ async function sign(data: UserRequest): Promise<void> {
   return await res.json();
 }
 
-async function authenticate({
+async function login({
   username,
   password,
 }: {
@@ -33,22 +35,26 @@ async function authenticate({
     body: JSON.stringify({ username, password }),
   });
   const body = await res.json();
-  const logged = body.message === "👍";
+  const logged = !!body?.acess_token;
 
+  console.log('Token antes: ',body.acess_token)
+  
+  
   if (!logged) return false;
+  //@ts-ignore
+  // const encryptedToken : string = CryptoJS.AES.encrypt(body.acess_token, config?.SECRET_KEY).toString();
+  // console.log('Token depois: ',encryptedToken);
+  sessionStorage.setItem("token", body.acess_token);
 
-  const users = await get();
-  console.log("entrei no login com ", username, " e ", password);
-  const user = users.find((user) => user.username === username);
-  if (user === undefined) {
-    throw Error("404 - Não foram encontrados os dados do usuário logado!");
-  }
+  const user = await (await fetchWithToken(`${config.API_URL}users/me`)).json();
+  console.log('User: ',JSON.stringify(user));
+
   sessionStorage.setItem("account", JSON.stringify(user));
   return true;
 }
 
-export const users = {
+export const auth = {
   get,
   sign,
-  authenticate,
+  login,
 };

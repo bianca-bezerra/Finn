@@ -16,7 +16,7 @@ async function sign(data) {
     });
     return await res.json();
 }
-async function authenticate({ username, password, }) {
+async function login({ username, password, }) {
     const res = await fetch(`${config.API_URL}auth/login`, {
         headers: {
             "Content-Type": "application/json",
@@ -26,17 +26,20 @@ async function authenticate({ username, password, }) {
     });
     const body = await res.json();
     const logged = !!body?.acess_token;
+    console.log('Token antes: ', body.acess_token);
     if (!logged)
         return false;
     //@ts-ignore
-    const encryptedToken = CryptoJS.AES.encrypt(body.acess_token, config?.SECRET_KEY).toString();
-    sessionStorage.setItem("token", JSON.stringify(encryptedToken));
+    // const encryptedToken : string = CryptoJS.AES.encrypt(body.acess_token, config?.SECRET_KEY).toString();
+    // console.log('Token depois: ',encryptedToken);
+    sessionStorage.setItem("token", body.acess_token);
     const user = await (await fetchWithToken(`${config.API_URL}users/me`)).json();
+    console.log('User: ', JSON.stringify(user));
     sessionStorage.setItem("account", JSON.stringify(user));
     return true;
 }
-export const users = {
+export const auth = {
     get,
     sign,
-    authenticate,
+    login,
 };

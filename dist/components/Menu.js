@@ -8,9 +8,6 @@ const Menu = () => {
     title.classList.add("text-white", "font-bold", "text-center", "font-pixel");
     const divLinks = document.createElement("div");
     divLinks.classList.add("flex", "flex-row", "w-1/4", "justify-around", "font-onest", "font-bold");
-  
-    const linkHome = Link("/","Finn")
-    linkHome.classList.add('font-onest','font-bold','text-white')
     const linkDebit = Link("/debits.html", "Despesas");
     const linkCategory = Link("/categories.html", "Categorias");
     const logoutBtn = document.createElement("button");
@@ -18,7 +15,7 @@ const Menu = () => {
     logoutBtn.classList.add("text-white");
     logoutBtn.addEventListener("click", logout);
     divLinks.append(linkCategory, linkDebit, logoutBtn);
-    menu.append(linkHome, divLinks);
+    menu.append(title, divLinks);
     return menu;
 };
 export default Menu;
