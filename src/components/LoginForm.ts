@@ -1,5 +1,5 @@
-import { strExists } from "./../utils/strings.js";
-import { users } from "./../api/users.js";
+import { strExists } from "../utils/strings.js";
+import { auth } from "../api/auth.js";
 import Button from "./ui/button.js";
 import Field from "./ui/field.js";
 import Form from "./ui/form.js";
@@ -15,7 +15,7 @@ async function handleSubmit() {
   ) as HTMLInputElement;
 
   if (strExists(usernameInput.value) && strExists(passwordInput.value)) {
-    const isAuthenticated = await users.authenticate({
+    const isAuthenticated = await auth.login({
       username: usernameInput.value,
       password: passwordInput.value,
     });

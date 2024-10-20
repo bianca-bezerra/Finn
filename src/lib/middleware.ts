@@ -8,8 +8,8 @@ export function middleware() {
   console.log("ta logado? ", isSigned());
   console.log(window.location.pathname);
   const isOnSignRoutes =
-    window.location.pathname === "/login.html" ||
-    window.location.pathname === "/sign.html";
+    window.location.pathname.includes("/login.html") ||
+    window.location.pathname.includes("/sign.html");
   console.log("ta nas rotas de sign? ", isOnSignRoutes);
   let redirect = false;
   if (!signed && !isOnSignRoutes) {
@@ -18,7 +18,7 @@ export function middleware() {
     redirect = true;
   } else if (signed && isOnSignRoutes) {
     console.log("entrei no elsif");
-    window.location.href = "./index.html";
+    window.location.href = "/index.html";
     redirect = true;
   }
   return {
