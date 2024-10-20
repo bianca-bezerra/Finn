@@ -1,0 +1,25 @@
+TODO
+- CRUD de despesas
+  - Criar
+  - Listar
+  - Atualizar
+  - Deletar
+
+- CRUD de categorias
+  - Criar 
+  - Listar
+  - Atualizar
+  - Deletar
+
+- Relatórios 
+  Despesas totais
+  Distribuição de gastos por categoria
+
+- Estado
+
+- Login mínimo (só precisa saber quem é);
+
+DOING
+
+
+DONE
