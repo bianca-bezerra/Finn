@@ -21,7 +21,7 @@ async function handleSubmit() {
 }
 const DebitForm = async () => {
     const div = document.createElement("div");
-    div.classList.add("h-fit", "p-6", "rounded", "shadow-lg", "space-y-4", "w-full", "justify-center");
+    div.classList.add("bg-white", "h-fit", "p-6", "rounded", "shadow-lg", "space-y-4", "w-full", "justify-center");
     const form = Form("Adicionar despesa");
     const valueField = Field("Valor", "Digite o valor", "valueInput");
     const categoryLabel = Label("Categoria");

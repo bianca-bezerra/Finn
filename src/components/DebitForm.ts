@@ -29,6 +29,7 @@ async function handleSubmit() {
 const DebitForm = async () => {
   const div = document.createElement("div");
   div.classList.add(
+    "bg-white",
     "h-fit",
     "p-6",
     "rounded",

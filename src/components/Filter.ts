@@ -45,6 +45,7 @@ const Filter = async () => {
   // div.style.marginRight = "5px";
 
   div.classList.add(
+    "bg-white",
     "h-fit",
     "p-6",
     "rounded",

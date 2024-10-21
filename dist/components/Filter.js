@@ -31,7 +31,7 @@ function handleClick() {
 const Filter = async () => {
     const div = document.createElement("div");
     // div.style.marginRight = "5px";
-    div.classList.add("h-fit", "p-6", "rounded", "shadow-md", "space-y-4", "w-full", "justify-center", "border-2", "border-gray-700", "mr-2");
+    div.classList.add("bg-white", "h-fit", "p-6", "rounded", "shadow-md", "space-y-4", "w-full", "justify-center", "border-2", "border-gray-700", "mr-2");
     const form = Form("Filtros");
     //CATEGORIA
     const categoryLabel = Label("Categoria");

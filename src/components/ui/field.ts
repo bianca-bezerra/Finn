@@ -1,20 +1,25 @@
-import Input from './input.js'
-import Label from './label.js'
+import Input from "./input.js";
+import Label from "./label.js";
 
-const Field = (labelValue: string, placeholder: string, id: string) => {
-    const div = document.createElement("div");
-    div.classList.add("field", 'w-full');
+const Field = (
+  labelValue: string,
+  placeholder: string,
+  id: string,
+  labelClass?: string,
+  inputClass?: string
+) => {
+  const div = document.createElement("div");
+  div.classList.add("field", "w-full");
 
-    const input = Input(placeholder);
-    input.id = id;
+  const input = Input(placeholder, inputClass);
+  input.id = id;
 
-    const label = Label(labelValue);
-    label.htmlFor = id;
+  const label = Label(labelValue, id, labelClass);
 
-    div.append(label);
-    div.append(input);
+  div.append(label);
+  div.append(input);
 
-    return div;
-}
+  return div;
+};
 
 export default Field;

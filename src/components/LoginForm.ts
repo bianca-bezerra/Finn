@@ -25,19 +25,30 @@ async function handleSubmit() {
 }
 
 const LoginForm = () => {
+  const root = document.createElement("div");
   const div = document.createElement("div");
+  root.classList.add(
+    "w-1/2",
+    "max-md:w-full",
+    "h-full",
+    "bg-yellow-100",
+    "flex",
+    "justify-center",
+    "items-center"
+  );
   div.classList.add(
     "p-6",
+    "w-fit",
     "rounded",
     "shadow-md",
+    "bg-white",
     "space-y-4",
-    "w-1/4",
     "justify-center",
     "border-2",
     "border-gray-400"
   );
 
-  const form = Form("Login");
+  const form = Form("Bem vindo de volta!");
 
   const usernameField = Field(
     "Username",
@@ -59,7 +70,8 @@ const LoginForm = () => {
 
   form.append(usernameField, passwordField, submitBtn, footer);
   div.appendChild(form);
+  root.appendChild(div);
 
-  return div;
+  return root;
 };
 export default LoginForm;

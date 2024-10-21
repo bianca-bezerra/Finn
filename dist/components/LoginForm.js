@@ -22,9 +22,11 @@ async function handleSubmit() {
         console.error("Preencha o formulário corretamente!");
 }
 const LoginForm = () => {
+    const root = document.createElement("div");
     const div = document.createElement("div");
-    div.classList.add("p-6", "rounded", "shadow-md", "space-y-4", "w-1/4", "justify-center", "border-2", "border-gray-400");
-    const form = Form("Login");
+    root.classList.add("w-1/2", "max-md:w-full", "h-full", "bg-yellow-100", "flex", "justify-center", "items-center");
+    div.classList.add("p-6", "w-fit", "rounded", "shadow-md", "bg-white", "space-y-4", "justify-center", "border-2", "border-gray-400");
+    const form = Form("Bem vindo de volta!");
     const usernameField = Field("Username", "Digite seu username", "usernameInput");
     const passwordField = Field("Senha", "Digite sua senha", "passwordInput");
     const submitBtn = Button("Enviar");
@@ -38,6 +40,7 @@ const LoginForm = () => {
     footer.appendChild(Link("./sign.html", "Criar conta"));
     form.append(usernameField, passwordField, submitBtn, footer);
     div.appendChild(form);
-    return div;
+    root.appendChild(div);
+    return root;
 };
 export default LoginForm;

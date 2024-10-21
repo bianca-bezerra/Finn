@@ -24,6 +24,7 @@ const CategoryForm = async () => {
   div.classList.add(
     "h-fit",
     "p-6",
+    "bg-white",
     "rounded",
     "shadow-lg",
     "space-y-4",
