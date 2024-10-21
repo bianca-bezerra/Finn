@@ -26,15 +26,18 @@ async function handleSubmit() {
 
 const LoginForm = () => {
   const root = document.createElement("div");
+  root.id = "loginForm"
   const div = document.createElement("div");
   root.classList.add(
     "w-1/2",
+    "max-md:flex",
     "max-md:w-full",
     "h-full",
     "bg-yellow-100",
     "flex",
     "justify-center",
-    "items-center"
+    "items-center",
+    "hidden"
   );
   div.classList.add(
     "p-6",
@@ -45,7 +48,7 @@ const LoginForm = () => {
     "space-y-4",
     "justify-center",
     "border-2",
-    "border-gray-400"
+    "border-gray-400",
   );
 
   const form = Form("Bem vindo de volta!");

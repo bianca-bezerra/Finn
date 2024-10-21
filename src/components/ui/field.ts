@@ -11,7 +11,7 @@ const Field = (
   const div = document.createElement("div");
   div.classList.add("field", "w-full");
 
-  const input = Input(placeholder, inputClass);
+  const input = Input({placeholder,className: inputClass});
   input.id = id;
 
   const label = Label(labelValue, id, labelClass);

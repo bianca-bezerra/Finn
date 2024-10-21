@@ -1,11 +1,14 @@
-const Input = (placeholder?: string, className?: string) => {
+const Input = (opts?: {placeholder?: string, className?: string, type?: string}) => {
   const input = document.createElement("input");
   input.classList.add("h-10", "rounded-lg", "p-2", "w-full");
-  if (className) {
-    input.classList.add(...className.split(""));
+  if (opts?.className) {
+    input.classList.add(...opts.className.split(""));
   }
-  if (placeholder) {
-    input.placeholder = placeholder;
+  if (opts?.placeholder) {
+    input.placeholder = opts.placeholder;
+  }
+  if(opts?.type){
+    input.type = opts.type;
   }
   return input;
 };
